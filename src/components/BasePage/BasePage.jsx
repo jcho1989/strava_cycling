@@ -1,23 +1,17 @@
 import {AppShell, Button} from '@mantine/core';
 
-import { useNavigate } from 'react-router-dom';
+import AuthorizedApp from '../AuthorizedApp/AuthorizedApp';
 
-import useAuthStore from '../../store/auth';
+import useAuthStore from '../../store/useAuthStore';
 
 export default function BasePage() {
-  console.log('BasePage');
   
-  const { isLoggedIn, isLoading, initiateStravaAuth, logout } = useAuthStore();
-  const navigate = useNavigate();
+  const {isLoggedIn, isLoading, initiateStravaAuth} = useAuthStore();
 
   const handleLogin = () => {
     initiateStravaAuth();
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
 
   return (
     <AppShell
@@ -29,10 +23,7 @@ export default function BasePage() {
           {isLoading ? (
             <p>Authenticating... Please wait</p>
           ) : isLoggedIn ? (
-            <div>
-              <p>Logged in</p>
-              <button onClick={handleLogout}>Logout</button>
-            </div>
+            <AuthorizedApp/>
           ) : (
             <Button onClick={handleLogin}>
               Authenticate with Strava

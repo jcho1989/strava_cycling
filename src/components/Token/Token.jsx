@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 
-import useAuthStore from '../../store/auth';
+import useAuthStore from '../../store/useAuthStore';
 
 const Token = () => {
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ const Token = () => {
     } else if (isAuthenticated) {
       navigate('/main');
     } else {
-      console.log('handing off to strava auth');
       handOffToStravaAuth();
     }
   }, [navigate, isAuthenticated, apiValidateToken, handOffToStravaAuth]);
