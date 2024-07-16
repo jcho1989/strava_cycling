@@ -2,10 +2,10 @@ import {useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'; // React Router's useLocation hook
 import queryString from 'query-string';
 
-import useAuthStore from '../../store/auth';
+import useAuthStore from '../../store/useAuthStore';
 
 const AuthCallback = () => {
-  console.log('AuthCallback');
+
   const location = useLocation();
   const { exchangeCodeForToken } = useAuthStore();
   const navigate = useNavigate();

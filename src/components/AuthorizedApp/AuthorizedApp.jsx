@@ -1,9 +1,18 @@
-import {AppShell} from '@mantine/core';
+import {useNavigate} from 'react-router-dom';
 
+import {AppShell, Button} from '@mantine/core';
+
+import useAuthStore from '../../store/useAuthStore';
 
 export default function AuthorizedApp() {
-  console.log('AuthorizedApp');
-  console.log('import.meta.env', import.meta.env)
+  
+  const {logout} = useAuthStore();
+  const navigate = useNavigate();
+  
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <AppShell
@@ -14,6 +23,9 @@ export default function AuthorizedApp() {
         <div>
           <p>Authenticated</p>
         </div>
+        <Button onClick={handleLogout}>
+          Logout
+        </Button>
       </AppShell.Main>
     </AppShell>
   );
