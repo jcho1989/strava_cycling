@@ -1,4 +1,5 @@
 import {create} from 'zustand';
+import {STRAVA_BASE_URL} from '../constants';
 
 const REACT_APP_STRAVA_CLIENT_ID = import.meta.env.VITE_APP_CLIENT_ID;
 const REACT_APP_STRAVA_CLIENT_SECRET= import.meta.env.VITE_APP_CLIENT_SECRET;
@@ -19,7 +20,7 @@ const useAuthStore = create((set) => ({
     const clientId = REACT_APP_STRAVA_CLIENT_ID;
     const redirectUri = `${origin}/auth/callback`;
 
-    const stravaAuthUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=read_all,profile:read_all,activity:read_all`;
+    const stravaAuthUrl = `${STRAVA_BASE_URL}/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=read_all,profile:read_all,activity:read_all`;
     window.location.assign(stravaAuthUrl);
   },
 
@@ -32,7 +33,7 @@ const useAuthStore = create((set) => ({
     const redirectUri = `${window.location.origin}/auth/callback`;
 
     try {
-      const response = await fetch('https://www.strava.com/api/v3/oauth/token', {
+      const response = await fetch(`${STRAVA_BASE_URL}/api/v3/oauth/token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ const useAuthStore = create((set) => ({
     const refreshToken = localStorage.getItem('stravaRefreshToken');
 
     try {
-      const response = await fetch('https://www.strava.com/api/v3/oauth/token', {
+      const response = await fetch(`${STRAVA_BASE_URL}/api/v3/oauth/token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

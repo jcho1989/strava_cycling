@@ -1,7 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Route , Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route , Routes} from 'react-router-dom';
 
-import { MantineProvider } from '@mantine/core';
+import {MantineProvider} from '@mantine/core';
+
+import {PATHS} from '../constants';
 
 import BasePage from './BasePage/BasePage'
 import Token from './Token/Token';
@@ -13,6 +15,8 @@ import ProtectedRoute from '../routes/ProtectedRoute';
 import './App.css'
 import '@mantine/core/styles.css';
 
+const {AUTH_CALLBACK, TOKEN, MAIN} = PATHS;
+
 
 export default function App() {
   return (
@@ -22,9 +26,9 @@ export default function App() {
           <div className="App">
             <Routes>
               <Route path="/" element={<BasePage />} />
-              <Route path="/auth/callback" element={<AuthCallback />} />
-              <Route path="/token" element={<Token />} />
-              <Route path="/main" element={<ProtectedRoute element={AuthorizedApp} />} />
+              <Route path={AUTH_CALLBACK} element={<AuthCallback />} />
+              <Route path={TOKEN} element={<Token />} />
+              <Route path={MAIN} element={<ProtectedRoute element={AuthorizedApp} />} />
             </Routes>
           </div>
         </Router>
