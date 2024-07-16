@@ -1,33 +1,44 @@
-import {AppShell, Burger} from '@mantine/core';
-import {useDisclosure} from '@mantine/hooks';
+import {AppShell, Button} from '@mantine/core';
+
+import { useNavigate } from 'react-router-dom';
+
+import useAuthStore from '../../store/auth';
 
 export default function BasePage() {
-  const [opened, { toggle }] = useDisclosure();
+  console.log('BasePage');
+  
+  const { isLoggedIn, isLoading, initiateStravaAuth, logout } = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    initiateStravaAuth();
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{
-        width: 300,
-        breakpoint: 'sm',
-        collapsed: { mobile: !opened },
-      }}
       padding="md"
     >
-      <AppShell.Header>
-        <Burger
-          opened={opened}
-          onClick={toggle}
-          hiddenFrom="sm"
-          size="sm"
-        />
-        <div>Header</div>
-      </AppShell.Header>
-
-      <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
-
       <AppShell.Main>
-        Strava segments
+        <div>
+          {isLoading ? (
+            <p>Authenticating... Please wait</p>
+          ) : isLoggedIn ? (
+            <div>
+              <p>Logged in</p>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <Button onClick={handleLogin}>
+              Authenticate with Strava
+            </Button>
+        )}
+      </div>
       </AppShell.Main>
     </AppShell>
   );
