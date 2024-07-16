@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-
+import viteLogo from '../../vite.svg'
 
 import './App.css'
 
@@ -14,11 +14,7 @@ export default function App() {
   const [count, setCount] = useState(0)
   return (
   <MantineProvider>
-    <Switch>
-      <Route path="/auth/callback" component={AuthCallback} />
-      <Route path="/token" exact component={Token} />
-      <Route path="/" exact component={HomePage} />
-    </Switch>
+    <BasePage/>
   </MantineProvider>
   );
 }
