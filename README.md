@@ -15,7 +15,7 @@ brew install node
 ```
 
 # Global NPM Packages
-Install node version manager and latest LTS
+Install node version manager and node LTS
 ```unix
 npm install -g nvm
 nvm install --lts
