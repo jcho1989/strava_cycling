@@ -15,16 +15,12 @@ brew install node
 ```
 
 # Global NPM Packages
-Install required global packages using the following.
+Install node version manager and latest LTS
 ```unix
 npm install -g nvm
-```
-
-# Install Node LTS
-Install required global packages using the following.
-```unix
 nvm install --lts
 ```
+
 
 # Installation
 
@@ -40,8 +36,8 @@ touch .env
 ```
 
 ## Add variables from Strava developer dashboard
+Update the .env file to
 ```unix
-#.env
 VITE_APP_CLIENT_ID=CLIENT_ID
 VITE_APP_CLIENT_SECRET=CLIENT_SECRET
 VITE_APP_REFRESHTOKEN=APP_REFRESHTOKEN
