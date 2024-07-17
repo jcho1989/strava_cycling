@@ -7,7 +7,7 @@ function useAuthenticatedAthlete() {
 
   const config = useMemo(() => {
     return {
-      apiCall: athletesApi.getAuthenticatedAthlete
+      apiCall: athletesApi.getLoggedInAthlete
   }
   }, []);
 
