@@ -19,13 +19,14 @@ const AuthCallback = () => {
         })
         .catch((error) => {
           console.error('Error exchanging code for token:', error);
+          navigate('/')
         });
     }
   }, [location.search, exchangeCodeForToken, navigate]);
 
   return (
     <div>
-      Authenticating... Please wait.
+      (AuthCallback) Authenticating... Please wait.
     </div>
   );
 };
