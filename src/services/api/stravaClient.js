@@ -57,7 +57,3 @@ export const refreshAccessToken = async (refreshToken) => {
     throw error;
   }
 };
-
-export function getAuthenticatedAthlete() {
-  return stravaClient.get('/athlete');
-}
