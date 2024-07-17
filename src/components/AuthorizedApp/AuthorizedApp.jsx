@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 
-import {AppShell} from '@mantine/core';
+import {AppShell, Button, Grid} from '@mantine/core';
 
 import useAuthStore from '../../store/useAuthStore';
 
@@ -8,13 +8,13 @@ import AthleteDetails from '../AthleteDetails/AthleteDetails';
 
 export default function AuthorizedApp() {
   
-  // const {logout} = useAuthStore();
-  // const navigate = useNavigate();
+  const {logout} = useAuthStore();
+  const navigate = useNavigate();
   
-  // const handleLogout = () => {
-  //   logout();
-  //   navigate('/');
-  // };
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <AppShell
@@ -23,13 +23,14 @@ export default function AuthorizedApp() {
     >
       <AppShell.Main>
         <AthleteDetails/>
-        {/* <Grid>
-          <Grid.Col span={4}>
+        <br/>
+        <Grid>
+          <Grid.Col span={12}>
             <Button onClick={handleLogout}>
               Logout
             </Button>
           </Grid.Col>
-        </Grid> */}
+        </Grid>
       </AppShell.Main>
     </AppShell>
   );
