@@ -33,15 +33,14 @@ export default function BasePage() {
             <Card shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
               <Image
-                src="https://i0.wp.com/www.nfrcycling.com/wp-content/uploads/2020/10/strava-club.jpg"
+                src="https://cdn6.aptoide.com/imgs/1/e/5/1e5340aa698a455893680365fcb46955_fgraphic.png"
                 height={160}
                 alt="Norway"
               />
             </Card.Section>
-      
             <Group justify="space-between" mt="md" mb="xs">
-              <Text fw={500}>Strava Segments</Text>
-              <Badge color="pink">HELL YEAH</Badge>
+              <Text fw={900}>STRAVA SEGMENTS</Text>
+              <Badge color="blue">HELL YEAH</Badge>
             </Group>
       
             <Text size="sm" c="dimmed">
