@@ -1,6 +1,6 @@
 import {Card, Skeleton, Text, Accordion} from '@mantine/core';
 
-import useAuthenticatedAthlete from '../../hooks/useAuthenticatedAthlete';
+import useAuthenticatedAthlete from '../../hooks/services/athletes/useAuthenticatedAthlete';
 
 export default function AthleteDetails() {
 
@@ -28,8 +28,6 @@ export default function AthleteDetails() {
       </Accordion>
     );
   }
-
-  
 
   return (
     <Card withBorder shadow="sm" radius="md" style={{width: '800px'}}>
