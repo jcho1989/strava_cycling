@@ -2,7 +2,7 @@ import {stravaClient} from "./stravaClient";
 
 export const baseApi = '/activities';
 
-function getActivityById(id) {
+function getActivityById({pathParams: {id}}) {
   return stravaClient.get(`${baseApi}/${id}`);
 }
 
