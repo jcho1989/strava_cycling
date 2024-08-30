@@ -23,7 +23,7 @@ export default function AthleteDetails() {
     ));
     
     return (
-      <Accordion defaultValue="Apples" wit>
+      <Accordion>
         {accordionBikes}
       </Accordion>
     );

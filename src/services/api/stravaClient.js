@@ -11,7 +11,6 @@ export const stravaClient = axios.create({
   },
 });
 
-
 stravaClient.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('stravaAccessToken');
