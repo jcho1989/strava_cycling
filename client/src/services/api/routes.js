@@ -10,7 +10,6 @@ function getRoutesByAthleteId(id) {
   return stravaClient.get(`athletes/${id}/routes`);
 }
 
-
 export default {
   getRouteById,
   getRoutesByAthleteId,

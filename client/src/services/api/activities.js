@@ -18,10 +18,6 @@ function getLapsByActivityId(id) {
   return stravaClient.get(`${baseApi}/${id}/laps`);
 }
 
-function getLoggedInAthleteActivities() {
-  const baseApi = 'athlete';
-  return stravaClient.get(`${baseApi}/activities`);
-}
 
 function getZonesByActivityId(id) {
   return stravaClient.get(`${baseApi}/${id}/zones`);
@@ -36,7 +32,6 @@ export default {
   getCommentsByActivityId,
   getKudoersByActivityId,
   getLapsByActivityId,
-  getLoggedInAthleteActivities,
   getZonesByActivityId,
   getActivityStreams
 }

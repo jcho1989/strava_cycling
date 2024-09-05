@@ -8,10 +8,6 @@ import useActivity from '../../hooks/services/activities/useActivity';
 import useActivityStreams from '../../hooks/services/activities/useActivityStreams';
 import {STREAM_TYPES} from '../../constants';
 
-
-// import details from '../mockData/activityDetails.json';
-// import streams from '../mockData/streamDetails.json'
-
 const DEFAULT_INTERVAL = 5;
 const DATE_FORMAT = 'MM-DD-YYYY';
 

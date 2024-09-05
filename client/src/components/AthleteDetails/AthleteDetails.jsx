@@ -10,7 +10,6 @@ import {
   IconChevronUp,
 } from '@tabler/icons-react';
 import classes from './StatsControls.module.css';
-import useActivities from '../../hooks/services/activities/useAuthenticatedAthleteActivities';
 
 const data = [
   { icon: IconRun, label: 'Running' },
@@ -20,8 +19,6 @@ const data = [
 
 export default function AthleteDetails() {
   const [date, setDate] = useState(new Date(2021, 9, 24));
-  // const {results} = useActivities();
-
 
   const stats = data.map((stat) => (
     <Paper className={classes.stat} radius="md" shadow="md" p="xs" key={stat.label}>

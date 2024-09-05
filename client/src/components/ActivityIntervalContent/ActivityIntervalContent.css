@@ -1,0 +1,8 @@
+.ActivityIntervalContent,
+.ActivityIntervalContent .scroll-area {
+  margin-top: 24px;
+}
+
+.ActivityIntervalContent .divider {
+  margin: 12px 0px;
+}
