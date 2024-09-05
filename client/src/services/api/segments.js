@@ -18,7 +18,6 @@ function getSegmentStreams(id) {
   return stravaClient.get(`${baseApi}/${id}/streams`);
 }
 
-
 export default {
   exploreSegments,
   getLoggedInAthleteStarredSegments,

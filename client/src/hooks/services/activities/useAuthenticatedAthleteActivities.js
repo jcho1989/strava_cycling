@@ -1,12 +1,12 @@
 import {useMemo} from 'react';
 
 import useBaseReadHook from '../../useBaseReadHook';
-import activitiesApi from '../../../services/api/activities';
+import athletesApi from '../../../services/api/athletes';
 
 function useActivities() {
   const config = useMemo(() => {
       return {
-        apiCall: activitiesApi.getLoggedInAthleteActivities
+        apiCall: athletesApi.getLoggedInAthleteActivities
     }
   }, []);
 

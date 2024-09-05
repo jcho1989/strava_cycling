@@ -14,8 +14,13 @@ function getStats() {
   return stravaClient.get(`${baseApi}/stats`);
 }
 
+function getLoggedInAthleteActivities() {
+  return stravaClient.get(`${baseApi}/activities`);
+}
+
 export default {
   getLoggedInAthlete,
   getLoggedInAthleteZones,
-  getStats
+  getStats,
+  getLoggedInAthleteActivities
 }

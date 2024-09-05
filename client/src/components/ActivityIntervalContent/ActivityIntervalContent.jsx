@@ -2,15 +2,14 @@ import {useState} from 'react';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 
-import {NumberInput, Space, Stack, Text} from '@mantine/core';
+import {Divider, NumberInput, ScrollArea, Space, Stack, Text} from '@mantine/core';
 
 import useActivity from '../../hooks/services/activities/useActivity';
 import useActivityStreams from '../../hooks/services/activities/useActivityStreams';
 import {STREAM_TYPES} from '../../constants';
 import {convertMetersToMiles, viewSplitsByMin} from './utils';
 
-// import details from '../mockData/activityDetails.json';
-// import streams from '../mockData/streamDetails.json'
+import './ActivityIntervalContent.css';
 
 const DEFAULT_INTERVAL = 5;
 const DATE_FORMAT = 'MM-DD-YYYY';
@@ -40,26 +39,29 @@ export default function ActivityIntervalContent(props = {}) {
 
   return (
     <div className="ActivityIntervalContent">
-        <Space style={{marginTop: 24}}>
-          <Text ta="left">Date: {formatDate(details)}</Text>
-          <Text ta="left">Activity: {activity.type}</Text>
-          <Text ta="left">Distance: {convertMetersToMiles(activity.distance)}</Text>
-          <br/>
-          <NumberInput
-            defaultValue={DEFAULT_INTERVAL}
-            onChange={setIntervalNum}
-            allowDecimal={false}
-            min={1}
-            label="Minute interval"
-            description="View distance by minute"
-            />
-          <br/>
-          {details && streams && (
-            <Stack>
+      <Space>
+        <Text ta="left">Date: {formatDate(details)}</Text>
+        <Text ta="left">Activity: {activity.type}</Text>
+        <Text ta="left">Distance: {convertMetersToMiles(activity.distance)}</Text>
+        
+        <Divider className="divider"/>
+        
+        <NumberInput
+          defaultValue={DEFAULT_INTERVAL}
+          onChange={setIntervalNum}
+          allowDecimal={false}
+          min={1}
+          label="Minute interval"
+          description="View distance by minute"
+          />
+        {details && streams && (
+          <ScrollArea className='scroll-area'>
+            <Stack h={500}>
               {renderSplitsByMin({timeStream, distanceStream}, intervalNum)}
             </Stack>
-          )}
-        </Space>
+          </ScrollArea>
+        )}
+      </Space>
     </div>
   )
 }
