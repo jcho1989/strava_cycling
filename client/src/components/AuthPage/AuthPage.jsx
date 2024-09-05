@@ -4,14 +4,13 @@ import AuthorizedApp from '../AuthorizedApp/AuthorizedApp';
 
 import useAuthStore from '../../store/useAuthStore';
 
-export default function BasePage() {
+export default function AuthPage() {
   
   const {isLoggedIn, isLoading, initiateStravaAuth} = useAuthStore();
 
   const handleLogin = () => {
     initiateStravaAuth();
   };
-
 
   return (
     <AppShell
