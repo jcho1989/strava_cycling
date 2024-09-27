@@ -6,6 +6,10 @@ function getActivityById({pathParams: {id}}) {
   return stravaClient.get(`${baseApi}/${id}`);
 }
 
+function getActivityPhotos({pathParams: {id}}) {
+  return stravaClient.get(`${baseApi}/${id}/photos?size=5000`);
+}
+
 function getCommentsByActivityId(id) {
   return stravaClient.get(`${baseApi}/${id}/comments`);
 }
@@ -33,5 +37,6 @@ export default {
   getKudoersByActivityId,
   getLapsByActivityId,
   getZonesByActivityId,
-  getActivityStreams
+  getActivityStreams,
+  getActivityPhotos
 }

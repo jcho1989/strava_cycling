@@ -1,13 +1,14 @@
 import {useState} from 'react';
-import {Collapse, Button, Skeleton, Grid} from '@mantine/core';
+import {Collapse, Button, Skeleton, Grid, Space} from '@mantine/core';
 
 import {DISTANCE_EXERCISES} from '../../constants';
+import useActivities from '../../hooks/services/activities/useAuthenticatedAthleteActivities';
 // import mockActivities from '../mockData/activities.json';
 
 import testData from './testData.json'
 
 import ActivityIntervalContent from '../ActivityIntervalContent/ActivityIntervalContent';
-import useActivities from '../../hooks/services/activities/useAuthenticatedAthleteActivities';
+import ActivityPhotoContent from '../ActivityPhotoContent/ActivityPhotoContent';
 
 // grab the first three for now to not risk hitting the API limit
 const ACTIVITY_LIST_COUNT = 3;
@@ -40,7 +41,10 @@ export default function ActivitiesList() {
               <Button onClick={() => toggle(index)}>{activity.name}</Button>
               <Collapse in={opened[index]}>
                 {opened[index] && (
-                  <ActivityIntervalContent activity={activity}/>
+                  <Space>
+                    <ActivityPhotoContent activity={activity}/>
+                    <ActivityIntervalContent activity={activity}/>
+                  </Space>
                 )}
               </Collapse>
             </Grid.Col>
