@@ -42,7 +42,7 @@ export default function ActivitiesList() {
               <Collapse in={opened[index]}>
                 {opened[index] && (
                   <Space>
-                    <ActivityPhotoContent activity={activity}/>
+                    {/* <ActivityPhotoContent activity={activity}/> */}
                     <ActivityIntervalContent activity={activity}/>
                   </Space>
                 )}
