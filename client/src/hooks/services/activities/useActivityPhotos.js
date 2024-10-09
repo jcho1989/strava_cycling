@@ -10,7 +10,6 @@ function useActivityPhotos(id) {
 
   const config = useMemo(() => {
     if (id && !cachedResult) {
-      console.log('fetching photos')
       return {
         apiCall: activitiesApi.getActivityPhotos,
         pathParams: {id}

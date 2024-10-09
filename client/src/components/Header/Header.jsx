@@ -46,8 +46,8 @@ export default function Header({ athlete = {} }) {
         <ActionIcon
           onClick={() => setColorScheme(colorScheme === "light" ? "dark" : "light")}
           variant="default"
-          size="xl"
-          radius={'xl'}
+          size="sm"
+          radius="xl"
           aria-label="Toggle color scheme"
         >
           <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />

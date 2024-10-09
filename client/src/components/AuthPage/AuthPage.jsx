@@ -38,12 +38,12 @@ export default function AuthPage() {
               />
             </Card.Section>
             <Group justify="space-between" mt="md" mb="xs">
-              <Text fw={900}>STRAVA SEGMENTS</Text>
+              <Text fw={900}>Pint Points</Text>
               <Badge color="blue">HELL YEAH</Badge>
             </Group>
       
             <Text size="sm" c="dimmed">
-              <span>Strava test app to do something with segments I think.</span>
+              Turn your strava stats into points for pints
             </Text>
       
             <Button color="blue" fullWidth mt="md" radius="md" onClick={handleLogin}>

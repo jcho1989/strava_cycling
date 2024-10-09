@@ -1,22 +1,29 @@
-import {BrowserRouter as Router, Route , Routes} from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core';
 
-import {MantineProvider} from '@mantine/core';
-
-import {PATHS} from '../constants';
-import {AuthProvider} from '../context/AuthContext';
+import { AuthProvider } from '../context/AuthContext';
 import Token from './Token/Token';
-
-import AuthPage from './AuthPage/AuthPage'
+import AuthPage from './AuthPage/AuthPage';
 import AuthCallback from './AuthCallback/AuthCallback';
 import AuthorizedApp from './AuthorizedApp/AuthorizedApp';
 import ProtectedRoute from '../routes/ProtectedRoute';
 
-import './App.css'
-import '@mantine/core/styles.css';
+import useAuthStore from '../store/useAuthStore';
+import { PATHS } from '../constants';
 
-const {AUTH_CALLBACK, TOKEN, MAIN} = PATHS;
+import '@mantine/core/styles.css';
+import './App.css';
+
+const { AUTH_CALLBACK, TOKEN, MAIN } = PATHS;
 
 export default function App() {
+  const { checkAuthStatus } = useAuthStore();
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, [checkAuthStatus]);
+  
   return (
     <MantineProvider>
       <AuthProvider>
