@@ -18,7 +18,6 @@ export default function ActivityPhotoContent(props = {}) {
       return photos.map((photo, index) => {
         const photoUrl = Object.values(photo.urls)[0];
       
-        console.log('photoUrl', photoUrl);
         return (
           <Image
             className='photo'
