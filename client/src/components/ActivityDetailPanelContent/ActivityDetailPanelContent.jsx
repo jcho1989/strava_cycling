@@ -6,7 +6,7 @@ import {NumberInput, Space, Stack, Text} from '@mantine/core';
 
 import useActivity from '../../hooks/services/activities/useActivity';
 import useActivityStreams from '../../hooks/services/activities/useActivityStreams';
-import {STREAM_TYPES} from '../../constants';
+import { STREAM_TYPES } from '../../constants/activities';
 
 const DEFAULT_INTERVAL = 5;
 const DATE_FORMAT = 'MM-DD-YYYY';

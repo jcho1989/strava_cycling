@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { STRAVA_BASE_URL } from '../constants';
-import { stravaClient, exchangeCodeForToken, refreshAccessToken } from '../services/api/stravaClient';
+import { STRAVA_BASE_URL } from '../constants/routes';
+import { authenticate, refreshAccessToken, stravaClient } from '../services/api/stravaClient';
 
 const REACT_APP_STRAVA_CLIENT_ID = import.meta.env.VITE_APP_CLIENT_ID;
 
@@ -77,18 +77,16 @@ const useAuthStore = create((set) => {
   
   const validateAccessToken = async () => {
     try {
-      console.log('stravaClient', stravaClient)
       
       const response = await stravaClient.get('/athlete');
       if (response.status === 200) {
-        return true; // Token is valid
+        return true;
       }
     } catch (error) {
       if (error.response?.status === 401) {
-        // Token is expired or invalid, try refreshing
         try {
           await refreshAccessToken();
-          return true; // Token refreshed successfully
+          return true;
         } catch (refreshError) {
           console.error('Refresh token failed:', refreshError);
         }
@@ -116,7 +114,7 @@ const useAuthStore = create((set) => {
     exchangeCodeForToken: async (code) => {
       set({ isLoading: true });
       try {
-        const data = await exchangeCodeForToken(code);
+        const data = await authenticate(code);
         setTokensInLocalStorage(data.access_token, data.refresh_token);
         set({
           isLoggedIn: true,

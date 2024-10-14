@@ -10,7 +10,17 @@ import './ActivityPhotoContent.css';
 
 export default function ActivityPhotoContent(props = {}) {
   const {activity} = props;
-  const {results: photos} = useActivityPhotos(activity.id);
+
+  const photoIds = [
+    12581603110,
+    12428897952,
+    12419849280,
+    12361592411,
+    12276531660
+  ];
+
+  const {results: photos} = useActivityPhotos(photoIds[4]);
+
   
   function renderPhotos(photos) {
     if (photos?.length) {

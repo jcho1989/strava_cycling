@@ -6,7 +6,7 @@ import {Divider, NumberInput, ScrollArea, Space, Stack, Text} from '@mantine/cor
 
 import useActivity from '../../hooks/services/activities/useActivity';
 import useActivityStreams from '../../hooks/services/activities/useActivityStreams';
-import {STREAM_TYPES} from '../../constants';
+import { STREAM_TYPES } from '../../constants/activities';
 import {convertMetersToMiles, viewSplitsByMin} from './utils';
 
 import './ActivityIntervalContent.css';
