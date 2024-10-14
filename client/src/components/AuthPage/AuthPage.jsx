@@ -4,6 +4,8 @@ import AuthorizedApp from '../AuthorizedApp/AuthorizedApp';
 
 import useAuthStore from '../../store/useAuthStore';
 
+import './AuthPage.css';
+
 export default function AuthPage() {
   
   const {isLoggedIn, isLoading, initiateStravaAuth} = useAuthStore();
@@ -14,6 +16,7 @@ export default function AuthPage() {
 
   return (
     <AppShell
+      className='AuthPage'
       padding="md"
     >
       <AppShell.Main>

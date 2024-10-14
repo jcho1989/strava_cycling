@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Collapse, Button, Skeleton, Grid, Space} from '@mantine/core';
 
-import {DISTANCE_EXERCISES} from '../../constants';
+import { DISTANCE_EXERCISES } from '../../constants/activities';
 import useActivities from '../../hooks/services/activities/useAuthenticatedAthleteActivities';
 // import mockActivities from '../mockData/activities.json';
 

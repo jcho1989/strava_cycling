@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import useAuthStore from '../../store/useAuthStore';
+
 const STRAVA_BASE_URL = 'https://www.strava.com/api/v3';
 const REACT_APP_STRAVA_CLIENT_ID = import.meta.env.VITE_APP_CLIENT_ID;
 const REACT_APP_STRAVA_CLIENT_SECRET = import.meta.env.VITE_APP_CLIENT_SECRET;
@@ -19,7 +21,20 @@ stravaClient.interceptors.request.use((config) => {
   return config;
 });
 
-export const exchangeCodeForToken = (code) => {
+stravaClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const { logout } = useAuthStore.getState();
+
+    if (error.response && error.response.status >= 400 && error.response.status < 500) {
+      logout();
+    }
+    return Promise.reject(error);
+  }
+);
+
+
+export const authenticate = (code) => {
   return stravaClient.post('/oauth/token', {
     client_id: REACT_APP_STRAVA_CLIENT_ID,
     client_secret: REACT_APP_STRAVA_CLIENT_SECRET,

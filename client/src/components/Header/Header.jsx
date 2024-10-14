@@ -23,22 +23,27 @@ import {
 } from "@tabler/icons-react";
 
 import useAuthStore from "../../store/useAuthStore";
+import { ROUTE_URLS } from "../../constants/routes";
 
 import classes from "./Header.module.css";
+import useAthleteStore from "../../store/athleteStore";
 
-export default function Header({ athlete = {} }) {
+export default function Header(
+  // { athlete = {} }
+) {
   const { logout } = useAuthStore();
   const navigate = useNavigate();
+  const {athlete} = useAthleteStore();
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate(ROUTE_URLS.LOGOUT);
   };
 
   const { colorScheme, setColorScheme } = useMantineColorScheme();
 
 
-  const { username, profile } = athlete;
+  const { username = null, profile = null } = athlete || {};
 
   return (
     <AppShell.Header>
